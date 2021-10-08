@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">The Shoe Store</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="error_login_email_or_pass_incorrect">Incorrect email and/or password. Please try again</string>
+    <string name="welcome_title">Welcome to the world\'s number one shoe shop</string>
+    <string name="welcome_subtitle">Start off on the right foot now and keep up the pace.</string>
+    <string name="next">Next</string>
+    <string name="description_fab_shoe_list">This buttons is to navigate a details</string>
+    <string name="details">Details</string>
+    <string name="name">Name</string>
+    <string name="size">Size</string>
+    <string name="company">Company</string>
+    <string name="description">Description</string>
+    <string name="images_links">Images links</string>
+    <string name="add">ADD</string>
+    <string name="more">More</string>
+    <string name="content_description_more">"This option is for logout "</string>
+    <string name="logout">Logout</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructions_subtitle">To add a new shoe, press the FAB that appears on the screen. Fill in ALL the fields and press the Add button. That\'s it, you\'re done.</string>
+</resources>

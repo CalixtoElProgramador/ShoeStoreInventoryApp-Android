@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.listocalixto.theshoestore.ui.auth.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.listocalixto.theshoestore.ui.intro.welcome.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/to_instructionsFragment"
+            app:destination="@id/instructionsFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructionsFragment"
+        android:name="com.listocalixto.theshoestore.ui.intro.instructions.InstructionsFragment"
+        android:label="fragment_instructions"
+        tools:layout="@layout/fragment_instructions" >
+        <action
+            android:id="@+id/to_shoesListFragment"
+            app:destination="@id/shoesListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/main_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/shoeDetailFragment"
+        android:name="com.listocalixto.theshoestore.ui.main.details.ShoeDetailFragment"
+        android:label="fragment_shoe_detail"
+        tools:layout="@layout/fragment_shoe_detail" />
+    <fragment
+        android:id="@+id/shoesListFragment"
+        android:name="com.listocalixto.theshoestore.ui.main.shoes.ShoesListFragment"
+        android:label="fragment_shoes_list"
+        tools:layout="@layout/fragment_shoes_list" >
+        <action
+            android:id="@+id/to_shoeDetailFragment"
+            app:destination="@id/shoeDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/shoesListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

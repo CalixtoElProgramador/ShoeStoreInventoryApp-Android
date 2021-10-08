@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.listocalixto.theshoestore.ui.auth.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.listocalixto.theshoestore.ui.auth.LoginFragment">
+
+        <!--In this view I use the Constraint Layout because I want to locate the textViews in the
+        middle of the screen with equidistant distances. It's easier than with a Linear Layout-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/login"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:textColor="?attr/colorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/inputLayout_email"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.44"
+            app:startIconDrawable="@drawable/ic_mail_outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textWebEmailAddress"
+                tools:text="calixto.programador@gmail.com" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56"
+            app:startIconDrawable="@drawable/ic_lock_outline">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                tools:text="QWEasdzxc123" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="?attr/colorOnPrimary"
+            android:onClick="@{() -> loginViewModel.onUserApproved()}"
+            android:text="@string/sign_up"
+            android:textColor="?attr/colorOnSecondary"
+            app:layout_constraintBottom_toBottomOf="@+id/button_signIn"
+            app:layout_constraintEnd_toStartOf="@+id/button_signIn"
+            app:layout_constraintTop_toTopOf="@+id/button_signIn"
+            app:strokeColor="?attr/colorPrimary"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_signIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/sign_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayout_password" />
+
+        <TextView
+            android:id="@+id/text_errorLogin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/error_login_email_or_pass_incorrect"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+            android:textColor="#CD1919"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
