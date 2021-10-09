@@ -24,4 +24,5 @@
     <string name="logout">Logout</string>
     <string name="instructions">Instructions</string>
     <string name="instructions_subtitle">To add a new shoe, press the FAB that appears on the screen. Fill in ALL the fields and press the Add button. That\'s it, you\'re done.</string>
+    <string name="error_fill_all_fields">Fill in all fields</string>
 </resources>

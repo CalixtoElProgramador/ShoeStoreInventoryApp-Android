@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import com.listocalixto.theshoestore.app.AppConstants.USER_EMAIL
 import com.listocalixto.theshoestore.app.AppConstants.USER_PASSWORD
 import com.listocalixto.theshoestore.R
@@ -24,31 +25,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.loginViewModel = viewModel
         binding.lifecycleOwner = this
 
-        binding.buttonSignIn.setOnClickListener { verifyInputs() }
-        binding.inputEmail.doAfterTextChanged { hideErrorText() }
-        binding.inputPassword.doAfterTextChanged { hideErrorText() }
-
         viewModel.eventUserApproved.observe(viewLifecycleOwner, { isApproved ->
             if (isApproved) {
                 findNavController().navigate(LoginFragmentDirections.toWelcomeFragment())
                 viewModel.onUserLogIn()
             }
         })
-    }
 
-    private fun hideErrorText() {
-        binding.textErrorLogin.visibility = View.INVISIBLE
-    }
+        viewModel.showSnackbarEvent.observe(viewLifecycleOwner, {
+            if (it) {
+                Snackbar.make(
+                    requireActivity().findViewById(android.R.id.content),
+                    getString(R.string.error_login_email_or_pass_incorrect),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+                viewModel.doneShowingSnackbar()
+            }
+        })
 
-    private fun verifyInputs() {
-        when {
-            binding.inputEmail.text.toString().trim() == USER_EMAIL && binding.inputPassword.text.toString() == USER_PASSWORD -> {
-                viewModel.onUserApproved()
-            }
-            else -> {
-                binding.textErrorLogin.visibility = View.VISIBLE
-            }
-        }
     }
 
 }

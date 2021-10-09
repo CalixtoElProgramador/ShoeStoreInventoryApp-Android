@@ -6,6 +6,10 @@
 
     </data>
 
+    <!--In this design I implemented a Linear Layout because the elements were
+    basic to position. In addition, I used the weights property to separate
+    the parameters at the same distance.-->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

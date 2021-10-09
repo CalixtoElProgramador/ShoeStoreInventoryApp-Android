@@ -25,11 +25,17 @@ class ShoeViewModel : ViewModel() {
     val eventLogout: LiveData<Boolean>
         get() = _eventLogout
 
+    private var _showSnackbarEvent = MutableLiveData<Boolean>()
+    val showSnackbarEvent: LiveData<Boolean>
+        get() = _showSnackbarEvent
+
     init {
         _shoeList.value = createList()
         _eventAddShoe.value = false
         _eventToDetails.value = false
         _eventLogout.value = false
+        _showSnackbarEvent.value = false
+
     }
 
     private fun createList(): MutableList<Shoe> {
@@ -48,16 +54,12 @@ class ShoeViewModel : ViewModel() {
         return list
     }
 
-    fun onShoeApproved() {
+    private fun onShoeApproved() {
         _eventAddShoe.value = true
     }
 
     fun onShoeAdded() {
         _eventAddShoe.value = false
-    }
-
-    fun addShoe(shoe: Shoe) {
-        _shoeList.value?.add(shoe)
     }
 
     fun onFABClick() {
@@ -74,6 +76,35 @@ class ShoeViewModel : ViewModel() {
 
     fun onLoginFragment() {
         _eventLogout.value = false
+    }
+
+    fun doneShowingSnackbar() {
+        _showSnackbarEvent.value = false
+    }
+
+
+    fun onAddShoe(name: String, size: String, company: String, description: String, links: String) {
+        when {
+            name.isNotEmpty() && size.isNotEmpty() && company.isNotEmpty() && description.isNotEmpty() && links.isNotEmpty() -> {
+                _shoeList.value?.add(
+                    Shoe(
+                        name,
+                        size.toDouble(),
+                        company,
+                        description,
+                        arrayListOf(links, links)
+                    )
+                )
+                onShoeApproved()
+            }
+
+            else -> {
+                _showSnackbarEvent.value = true
+            }
+
+        }
+
+
     }
 
 }

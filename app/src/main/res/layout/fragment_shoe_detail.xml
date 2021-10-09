@@ -5,6 +5,10 @@
 
     <data>
 
+        <variable
+            name="shoeViewModel"
+            type="com.listocalixto.theshoestore.ui.main.ShoeViewModel" />
+
     </data>
 
     <LinearLayout
@@ -96,7 +100,7 @@
                 android:id="@+id/input_shoeDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text" />
+                android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,9 +125,11 @@
             android:id="@+id/button_addShoe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:onClick="@{() -> shoeViewModel.onAddShoe(inputShoeName.getText().toString(), inputShoeSize.getText().toString(), inputShoeCompany.getText().toString(), inputShoeDescription.getText().toString(), inputShoeLinks.getText().toString())}"
             android:text="@string/add" />
 
     </LinearLayout>
+
 </layout>
