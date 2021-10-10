@@ -8,6 +8,7 @@
         <variable
             name="loginViewModel"
             type="com.listocalixto.theshoestore.ui.auth.LoginViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,6 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textWebEmailAddress"
+                android:text="@={loginViewModel.email}"
                 tools:text="calixto.programador@gmail.com" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -78,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
+                android:text="@={loginViewModel.password}"
                 tools:text="QWEasdzxc123" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -103,8 +106,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:onClick="@{() -> loginViewModel.onLogIn(inputEmail.getText().toString(), inputPassword.getText().toString())}"
             android:text="@string/sign_in"
+            android:onClick="@{() -> loginViewModel.onLogIn()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputLayout_password" />
 

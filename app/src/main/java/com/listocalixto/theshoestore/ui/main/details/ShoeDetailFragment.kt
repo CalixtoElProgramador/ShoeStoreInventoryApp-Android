@@ -39,6 +39,8 @@ class ShoeDetailFragment : Fragment(R.layout.fragment_shoe_detail) {
             }
         })
 
+
+
     }
 
 }

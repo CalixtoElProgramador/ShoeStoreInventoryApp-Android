@@ -12,9 +12,12 @@ class LoginViewModel : ViewModel() {
     val eventUserApproved: LiveData<Boolean>
         get() = _eventUserApproved
 
-    private var _showSnackbarEvent = MutableLiveData<Boolean>()
+    private val _showSnackbarEvent = MutableLiveData<Boolean>()
     val showSnackbarEvent: LiveData<Boolean>
         get() = _showSnackbarEvent
+
+    val email = MutableLiveData<String>()
+    val password = MutableLiveData<String>()
 
     init {
         _eventUserApproved.value = false
@@ -33,14 +36,10 @@ class LoginViewModel : ViewModel() {
         _showSnackbarEvent.value = false
     }
 
-    fun onLogIn(email: String, password: String) {
+    fun onLogIn() {
         when {
-            email == USER_EMAIL && password == USER_PASSWORD -> {
-                _eventUserApproved.value = true
-            }
-            else -> {
-                _showSnackbarEvent.value = true
-            }
+            email.value == USER_EMAIL && password.value == USER_PASSWORD -> onUserApproved()
+            else -> _showSnackbarEvent.value = true
         }
     }
 

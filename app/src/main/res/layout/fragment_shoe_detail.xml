@@ -49,6 +49,7 @@
                 android:id="@+id/input_shoeName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={shoeViewModel.shoeName}"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -66,6 +67,7 @@
                 android:id="@+id/input_shoeSize"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={shoeViewModel.shoeSize}"
                 android:inputType="numberDecimal" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +85,7 @@
                 android:id="@+id/input_shoeCompany"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={shoeViewModel.shoeCompany}"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -100,6 +103,7 @@
                 android:id="@+id/input_shoeDescription"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={shoeViewModel.shoeDescription}"
                 android:inputType="text"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -117,6 +121,7 @@
                 android:id="@+id/input_shoeLinks"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@={shoeViewModel.shoeLinks}"
                 android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -127,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
-            android:onClick="@{() -> shoeViewModel.onAddShoe(inputShoeName.getText().toString(), inputShoeSize.getText().toString(), inputShoeCompany.getText().toString(), inputShoeDescription.getText().toString(), inputShoeLinks.getText().toString())}"
+            android:onClick="@{() -> shoeViewModel.onAddShoe()}"
             android:text="@string/add" />
 
     </LinearLayout>

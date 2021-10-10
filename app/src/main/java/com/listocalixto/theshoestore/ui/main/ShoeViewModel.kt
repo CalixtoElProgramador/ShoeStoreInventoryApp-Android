@@ -29,6 +29,12 @@ class ShoeViewModel : ViewModel() {
     val showSnackbarEvent: LiveData<Boolean>
         get() = _showSnackbarEvent
 
+    val shoeName = MutableLiveData<String>()
+    val shoeSize = MutableLiveData<String>()
+    val shoeCompany = MutableLiveData<String>()
+    val shoeDescription = MutableLiveData<String>()
+    val shoeLinks = MutableLiveData<String>()
+
     init {
         _shoeList.value = createList()
         _eventAddShoe.value = false
@@ -54,8 +60,26 @@ class ShoeViewModel : ViewModel() {
         return list
     }
 
+    private fun addShoe(
+        name: String,
+        size: Double,
+        company: String,
+        description: String,
+        links: String
+    ) {
+        _shoeList.value?.add(Shoe(name, size, company, description, arrayListOf(links, links)))
+    }
+
     private fun onShoeApproved() {
         _eventAddShoe.value = true
+    }
+
+    private fun setParametersEmpty() {
+        shoeName.value = ""
+        shoeSize.value = ""
+        shoeCompany.value = ""
+        shoeDescription.value = ""
+        shoeLinks.value = ""
     }
 
     fun onShoeAdded() {
@@ -82,29 +106,24 @@ class ShoeViewModel : ViewModel() {
         _showSnackbarEvent.value = false
     }
 
+    fun onAddShoe() {
+        val name = shoeName.value
+        val size = shoeSize.value
+        val company = shoeCompany.value
+        val description = shoeDescription.value
+        val links = shoeLinks.value
 
-    fun onAddShoe(name: String, size: String, company: String, description: String, links: String) {
         when {
-            name.isNotEmpty() && size.isNotEmpty() && company.isNotEmpty() && description.isNotEmpty() && links.isNotEmpty() -> {
-                _shoeList.value?.add(
-                    Shoe(
-                        name,
-                        size.toDouble(),
-                        company,
-                        description,
-                        arrayListOf(links, links)
-                    )
-                )
+            !name.isNullOrEmpty() && !size.isNullOrEmpty() && !company.isNullOrEmpty() && !description.isNullOrEmpty()
+                    && !links.isNullOrEmpty() -> {
+                addShoe(name, size.toDouble(), company, description, links)
+                setParametersEmpty()
                 onShoeApproved()
             }
-
             else -> {
                 _showSnackbarEvent.value = true
             }
-
         }
-
-
     }
 
 }
